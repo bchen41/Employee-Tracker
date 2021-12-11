@@ -53,6 +53,10 @@ async function loadMainPrompts() {
           value: "UPDATE_EMPLOYEE_ROLE",
         },
         {
+          name: "View All Employees By Department",
+          value: "VIEW_EMPLOYEES_BY_DEPARTMENT",
+        },
+        {
           name: "Quit",
           value: "QUIT",
         },
@@ -76,6 +80,8 @@ async function loadMainPrompts() {
       return addEmployee();
     case "UPDATE_EMPLOYEE_ROLE":
       return updateEmployeeRole();
+    case "VIEW_EMPLOYEES_BY_DEPARTMENT":
+      return viewEmployeesByDepartment();
     default:
       return quit();
   }
@@ -243,6 +249,31 @@ async function updateEmployeeRole() {
   await db.updateEmployeeRole(employeeId, roleId);
 
   console.log("Updated employee's role");
+
+  loadMainPrompts();
+}
+
+async function viewEmployeesByDepartment() {
+  const departments = await db.selectAllDepartments();
+
+  const departmentChoices = departments.map(({ id, department }) => ({
+    value: id,
+    name: department,
+  }));
+
+  const { departmentId } = await prompt([
+    {
+      type: "list",
+      name: "departmentId",
+      message: "Which department would you like to see employees for?",
+      choices: departmentChoices,
+    },
+  ]);
+
+  const employees = await db.selectAllEmployeesByDepartment(departmentId);
+
+  console.log("\n");
+  console.table(employees);
 
   loadMainPrompts();
 }
