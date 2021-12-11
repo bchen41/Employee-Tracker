@@ -144,12 +144,12 @@ async function addRole() {
     },
     {
       name: "salary",
-      message: "What is the salary of the role?",
+      message: "What is the salary of this role?",
     },
     {
       type: "list",
       name: "department_id",
-      message: "Which department does the role belong to?",
+      message: "Which department does this role belong to?",
       choices: departmentChoices,
     },
   ]);
@@ -241,7 +241,7 @@ async function updateEmployeeRole() {
     {
       type: "list",
       name: "roleId",
-      message: "Which role do you want to assign the selected employee?",
+      message: "Which role do you want to assign to the selected employee?",
       choices: roleChoices,
     },
   ]);
@@ -265,7 +265,7 @@ async function viewEmployeesByDepartment() {
     {
       type: "list",
       name: "departmentId",
-      message: "Which department would you like to see employees for?",
+      message: "Which department would you like to see all employees for?",
       choices: departmentChoices,
     },
   ]);

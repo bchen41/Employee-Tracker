@@ -57,7 +57,7 @@ class DB {
     return this.connection.query("INSERT INTO employee SET ?", employee);
   }
 
-  // Update the given employee's role
+  // Update the chosen employee's role
   updateEmployeeRole(employeeId, roleId) {
     return this.connection.query(
       `UPDATE employee SET role_id = ? WHERE id = ?`,
@@ -65,7 +65,7 @@ class DB {
     );
   }
 
-  // Find all employees in a given department, join with roles to display role titles
+  // Select all employees in a given department, join with roles to display role titles
   selectAllEmployeesByDepartment(departmentId) {
     return this.connection.query(
       `
