@@ -82,7 +82,7 @@ async function loadMainPrompts() {
 }
 
 async function viewDepartments() {
-  const departments = await db.viewAllDepartments();
+  const departments = await db.selectAllDepartments();
 
   console.log("\n");
   console.table(departments);
@@ -91,7 +91,7 @@ async function viewDepartments() {
 }
 
 async function viewRoles() {
-  const roles = await db.viewAllRoles();
+  const roles = await db.selectAllRoles();
 
   console.log("\n");
   console.table(roles);
@@ -100,7 +100,7 @@ async function viewRoles() {
 }
 
 async function viewEmployees() {
-  const employees = await db.viewAllEmployees();
+  const employees = await db.selectAllEmployees();
 
   console.log("\n");
   console.table(employees);
