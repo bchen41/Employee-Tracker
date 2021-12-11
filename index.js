@@ -90,6 +90,15 @@ async function viewDepartments() {
   loadMainPrompts();
 }
 
+async function viewRoles() {
+  const roles = await db.viewAllRoles();
+
+  console.log("\n");
+  console.table(roles);
+
+  loadMainPrompts();
+}
+
 function quit() {
   console.log("Goodbye!");
   process.exit();
