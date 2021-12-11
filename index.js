@@ -126,9 +126,9 @@ async function addDepartment() {
 async function addRole() {
   const departments = await db.selectAllDepartments();
 
-  const departmentChoices = departments.map(({ id, name }) => ({
-    name: name,
+  const departmentChoices = departments.map(({ id, department }) => ({
     value: id,
+    name: department,
   }));
 
   const role = await prompt([
@@ -147,7 +147,6 @@ async function addRole() {
       choices: departmentChoices,
     },
   ]);
-
   await db.insertRole(role);
 
   console.log(`Added ${role.title} to the database`);
