@@ -99,6 +99,15 @@ async function viewRoles() {
   loadMainPrompts();
 }
 
+async function viewEmployees() {
+  const employees = await db.viewAllEmployees();
+
+  console.log("\n");
+  console.table(employees);
+
+  loadMainPrompts();
+}
+
 function quit() {
   console.log("Goodbye!");
   process.exit();
