@@ -10,7 +10,7 @@ function init() {
   const logoText = logo({
     name: "Employee Tracker",
     borderColor: "red",
-    logoColor: "blue",
+    logoColor: "green",
   }).render();
   console.log(logoText);
 
