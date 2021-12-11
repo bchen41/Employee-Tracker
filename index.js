@@ -108,6 +108,21 @@ async function viewEmployees() {
   loadMainPrompts();
 }
 
+async function addDepartment() {
+  const department = await prompt([
+    {
+      name: "name",
+      message: "What is the name of the department?",
+    },
+  ]);
+
+  await db.insertDepartment(department);
+
+  console.log(`Added ${department.name} to the database`);
+
+  loadMainPrompts();
+}
+
 function quit() {
   console.log("Goodbye!");
   process.exit();
