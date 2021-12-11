@@ -51,6 +51,11 @@ class DB {
   insertRole(role) {
     return this.connection.query("INSERT INTO role SET ?", role);
   }
+
+  // Create a new employee
+  insertEmployee(employee) {
+    return this.connection.query("INSERT INTO employee SET ?", employee);
+  }
 }
 
 module.exports = new DB(connection);
