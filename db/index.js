@@ -5,6 +5,17 @@ class DB {
   constructor(connection) {
     this.connection = connection;
   }
+  // Select all departments, join with employees and roles and sum up utilized department budget
+  selectAllDepartments() {
+    return this.connection.query(
+      `
+      SELECT department.id, department.name AS department, SUM(role.salary) AS utilized_budget
+      FROM department 
+      LEFT JOIN role ON role.department_id = department.id
+      GROUP BY department.id
+      `
+    );
+  }
 }
 
 module.exports = new DB(connection);
