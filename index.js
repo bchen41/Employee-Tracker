@@ -81,6 +81,15 @@ async function loadMainPrompts() {
   }
 }
 
+async function viewDepartments() {
+  const departments = await db.viewAllDepartments();
+
+  console.log("\n");
+  console.table(departments);
+
+  loadMainPrompts();
+}
+
 function quit() {
   console.log("Goodbye!");
   process.exit();
