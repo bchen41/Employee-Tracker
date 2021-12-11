@@ -16,6 +16,17 @@ class DB {
       `
     );
   }
+
+  // Select all roles, join with departments to display the department name
+  selectAllRoles() {
+    return this.connection.query(
+      `
+    SELECT role.id, role.title, role.salary, department.name AS department
+    FROM role
+    LEFT JOIN department ON role.department_id = department.id
+    `
+    );
+  }
 }
 
 module.exports = new DB(connection);
